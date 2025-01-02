@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_package = "proto";
+
+service Greeter {
+  rpc SayHello (CommunicationRequest) returns (CommunicationReply) {}
+}
+
+message CommunicationRequest {
+  /*type   name = id; */
+  string name = 1; /* Id must be bigger than 0 and be the same on client and server */
+}
+
+message CommunicationReply {
+  string message = 1;
+}
