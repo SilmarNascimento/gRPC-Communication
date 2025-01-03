@@ -99,6 +99,9 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+          <generatedSourcesDirectory>
+            ${project.build.directory}/generated-sources/protobuf/java
+          </generatedSourcesDirectory>
         </configuration>
       </plugin>
     </plugins>
