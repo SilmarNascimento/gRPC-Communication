@@ -17,13 +17,11 @@
   </properties>
 
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
     <dependency>
       <groupId>com.google.protobuf</groupId>
       <artifactId>protobuf-java</artifactId>
-      <version>4.29.2</version>
+      <version>3.25.5</version>
     </dependency>
-
 
     <!-- gRPC dependencies -->
     <!-- https://mvnrepository.com/artifact/io.grpc/grpc-netty-shaded -->
@@ -56,46 +54,43 @@
       <artifactId>javax.annotation-api</artifactId>
       <version>1.2</version>
     </dependency>
+    <dependency> <!-- necessary for Java 9+ -->
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>annotations-api</artifactId>
+      <version>6.0.53</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
   <build>
     <defaultGoal>clean generate-sources compile install</defaultGoal>
+    <extensions>
+      <extension>
+        <groupId>kr.motd.maven</groupId>
+        <artifactId>os-maven-plugin</artifactId>
+        <version>1.7.1</version>
+      </extension>
+    </extensions>
 
     <plugins>
-      <!-- compile proto file into java files. -->
       <plugin>
-        <groupId>com.github.os72</groupId>
-        <artifactId>protoc-jar-maven-plugin</artifactId>
-        <version>3.6.0.1</version>
+        <groupId>org.xolstice.maven.plugins</groupId>
+        <artifactId>protobuf-maven-plugin</artifactId>
+        <version>0.6.1</version>
+        <configuration>
+          <protocArtifact>com.google.protobuf:protoc:3.25.5:exe:${os.detected.classifier}</protocArtifact>
+          <pluginId>grpc-java</pluginId>
+          <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.69.0:exe:${os.detected.classifier}</pluginArtifact>
+        </configuration>
         <executions>
           <execution>
-            <phase>generate-sources</phase>
             <goals>
-              <goal>run</goal>
+              <goal>compile</goal>
+              <goal>compile-custom</goal>
             </goals>
-            <configuration>
-              <includeMavenTypes>direct</includeMavenTypes>
-
-              <inputDirectories>
-                <include>src/main/resources</include>
-              </inputDirectories>
-
-              <outputTargets>
-                <outputTarget>
-                  <type>java</type>
-                  <outputDirectory>src/main/java</outputDirectory>
-                </outputTarget>
-                <outputTarget>
-                  <type>grpc-java</type>
-                  <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.15.0</pluginArtifact>
-                  <outputDirectory>src/main/java</outputDirectory>
-                </outputTarget>
-              </outputTargets>
-            </configuration>
           </execution>
         </executions>
       </plugin>
-
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
