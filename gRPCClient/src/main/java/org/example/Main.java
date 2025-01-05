@@ -16,7 +16,10 @@ public class Main {
      * the use of such API or the data
      * exchanged is not sensitive.
      */
-    ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8999).usePlaintext().build();
+    ManagedChannel channel = ManagedChannelBuilder
+        .forAddress("localhost", 8999)
+        .usePlaintext()
+        .build();
 
     /*
      * *
