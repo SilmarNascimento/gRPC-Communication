@@ -89,6 +89,8 @@ git clone git@github.com:SilmarNascimento/gRPC-Communication.git
 
 ### Executar o Projeto Localmente
 
+#### Instalação das Dependências
+
 Como são dois projetos separados simulando os serviços de cliente e servidor, navegue até a pasta de cada projeto e instale as dependências dos serviços executando os seguintes comandos:
 
 ```bash
@@ -105,6 +107,8 @@ cd ../gRPCServer
 mvn clean install
 ```
 
+#### Executar o Servidor
+
 Após a instalação das dependências do servidor, você pode subir a aplicação por sua IDE ou executando o seguinte comando:
 
 ```bash
@@ -116,6 +120,8 @@ java -jar target/Server-1.0-SNAPSHOT.jar
 ```
 
 Esse comando irá iniciar o servidor da aplicação que estará rodando por padrão na porta `8999`.
+
+#### Executar o Cliente
 
 Agora que o Server está rodando, podemos subir o Client da aplicação por sua IDE escolhida ou seguindo os passos abaixo:
 
@@ -129,6 +135,8 @@ mvn package
 # subir o serviço Client rodando o .jar
 java -jar target/Client-1.0-SNAPSHOT.jar
 ```
+
+#### Resultdo Esperado
 
 Ao rodar o CLient, a conexão irá fechar após receber a seguinte mensagem:
 
