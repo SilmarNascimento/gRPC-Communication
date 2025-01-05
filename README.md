@@ -1,7 +1,7 @@
 [JAVA__BADGE]: https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white
 [gRPC__BADGE]: https://img.shields.io/badge/gRPC-%2300B3E6.svg?style=for-the-badge&logo=grpc&logoColor=white
 
-<h1 align="center" style="font-weight: bold;" id="top">Cadastro de Clientes 💻</h1>
+<h1 align="center" style="font-weight: bold;" id="top">Comunicação gRPC 💻</h1>
 
 <h1 align="center">
 
