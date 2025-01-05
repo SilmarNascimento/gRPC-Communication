@@ -1,5 +1,6 @@
 package org.example;
 
+import io.grpc.BindableService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.example.service.ServerProtoImplementation;
@@ -11,7 +12,7 @@ public class Main {
     try {
       Server server = ServerBuilder
           .forPort(8999)
-          .addService(new ServerProtoImplementation()).build();
+          .addService((BindableService) new ServerProtoImplementation()).build();
 
       server.start();
       System.out.println("Server started at " + server.getPort());
